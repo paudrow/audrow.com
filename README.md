@@ -1,16 +1,83 @@
-# Fresh project
+# Audrow Nash's Personal Website
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+This is the repository for Audrow Nash's personal website, built using Fresh, a
+next-generation web framework for Deno.
 
-### Usage
+## Project Overview
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+This website serves as a portfolio and personal blog for Audrow Nash, showcasing
+his work in robotics, software engineering, and podcasting. The site includes
+the following main sections:
 
-Then start the project:
+- Home
+- About
+- Resume
+- Projects
+- Contact
 
-```
-deno task start
-```
+## Technologies Used
 
-This will watch the project directory and restart as necessary.
+- [Fresh](https://fresh.deno.dev/): A next-generation web framework for Deno
+- [Deno](https://deno.land/): A secure runtime for JavaScript and TypeScript
+- [TypeScript](https://www.typescriptlang.org/): A typed superset of JavaScript
+- [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework
+- [Preact](https://preactjs.com/): A fast 3kB alternative to React with the same
+  modern API
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Deno installed on your system. If not, you can install it by
+following the instructions at
+https://deno.land/manual/getting_started/installation
+
+### Running the Project
+
+1. Clone this repository:
+   ```
+   git clone https://github.com/your-username/audrow-nash-website.git
+   cd audrow-nash-website
+   ```
+
+2. Start the development server:
+   ```
+   deno task start
+   ```
+
+3. Open your browser and navigate to `http://localhost:8000` to view the
+   website.
+
+## Project Structure
+
+- `routes/`: Contains the main page components and routing logic
+- `islands/`: Contains interactive components that are hydrated on the
+  client-side
+- `components/`: Contains reusable UI components
+- `static/`: Contains static assets like images and stylesheets
+- `fresh.gen.ts`: Auto-generated file mapping routes and islands
+
+## Customization
+
+To customize the content of the website, you can modify the following files:
+
+- `routes/index.tsx`: Update the content of the home page
+- `routes/about.tsx`: Modify the about page content
+- `routes/resume.tsx`: Update the resume information
+- `routes/projects.tsx`: Add or modify project information
+- `routes/contact.tsx`: Update contact form or contact information
+
+## Deployment
+
+This project can be deployed to any platform that supports Deno, such as Deno
+Deploy. For more information on deploying Fresh projects, refer to the
+[Fresh documentation](https://fresh.deno.dev/docs/concepts/deploying).
+
+## Contributing
+
+If you'd like to contribute to this project, please fork the repository and
+create a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License.
