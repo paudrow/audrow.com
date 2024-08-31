@@ -8,11 +8,13 @@ export const handler: Handlers<Project | null> = {
     // For this example, we'll just return a mock project
     const project = {
       slug,
-      title: slug.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "),
-      description: `This is the project page for ${slug}.`
+      title: slug.split("-").map((word) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(" "),
+      description: `This is the project page for ${slug}.`,
     };
     return ctx.render(project);
-  }
+  },
 };
 
 interface Project {
@@ -27,7 +29,9 @@ export default function ProjectPage({ data }: PageProps<Project | null>) {
       <PageLayout currentPage="projects">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Project Not Found</h1>
-          <p className="text-xl">Sorry, the requested project could not be found.</p>
+          <p className="text-xl">
+            Sorry, the requested project could not be found.
+          </p>
         </div>
       </PageLayout>
     );
