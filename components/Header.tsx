@@ -9,7 +9,7 @@ interface HeaderProps {
 export function Header({ currentPage }: HeaderProps) {
   return (
     <header class="py-6 sm:py-8">
-      <div class="hidden sm:flex justify-between items-center">
+      <div class="hidden md:flex justify-between items-center">
         <div class="w-1/3">
           {currentPage !== "home" && (
             <a href="/" aria-label="Home" class="pointer-events-auto">
@@ -35,7 +35,7 @@ export function Header({ currentPage }: HeaderProps) {
           <DarkModeToggle />
         </div>
       </div>
-      <div class="sm:hidden flex justify-between items-center">
+      <div class="md:hidden flex justify-between items-center gap-4">
         {currentPage !== "home" && (
           <div class="h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10">
             <a aria-label="Home" class="pointer-events-auto" href="/">

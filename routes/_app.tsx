@@ -11,7 +11,7 @@ export default function App({ Component }: PageProps) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            if (localStorage.getItem('darkMode') === 'true' || 
+            if (localStorage.getItem('darkMode') === 'true' ||
                 (!('darkMode' in localStorage) &&
                 window.matchMedia('(prefers-color-scheme: dark)').matches)) {
               document.documentElement.classList.add('dark');
@@ -20,7 +20,7 @@ export default function App({ Component }: PageProps) {
           }}
         />
       </head>
-      <body>
+      <body class="bg-zinc-100 dark:bg-black">
         <Component />
       </body>
     </html>
