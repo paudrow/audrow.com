@@ -20,7 +20,7 @@ export default function App({ Component }: PageProps) {
           }}
         />
       </head>
-      <body class="bg-zinc-100 dark:bg-black">
+      <body>
         <Component />
       </body>
     </html>

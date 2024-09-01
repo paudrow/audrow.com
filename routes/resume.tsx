@@ -68,29 +68,29 @@ export default function Resume() {
     <PageLayout currentPage="resume">
       <div className="space-y-8">
         <header className="text-center">
-          <h1 className="text-4xl font-bold text-accent-light dark:text-accent-dark">
+          <h1 className="text-4xl font-bold text-lightmode-accent-500 dark:text-darkmode-accent-500">
             {resumeData.name}
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400">
+          <p className="text-xl">
             {resumeData.title}
           </p>
-          <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-2 text-sm">
             <p>{resumeData.contact.email}</p>
             <p>{resumeData.contact.location}</p>
           </div>
         </header>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-2 text-accent-light dark:text-accent-dark">
+          <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500">
             Summary
           </h2>
-          <p className="text-gray-700 dark:text-gray-300">
+          <p>
             {resumeData.summary}
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-4 text-accent-light dark:text-accent-dark">
+          <h2 className="text-2xl font-semibold mb-4 text-lightmode-accent-500 dark:text-darkmode-accent-500">
             Experience
           </h2>
           {resumeData.experience.map((job, index) => (
@@ -99,7 +99,7 @@ export default function Resume() {
               <p className="text-gray-600 dark:text-gray-400">
                 {job.company} | {job.duration}
               </p>
-              <ul className="list-disc list-inside mt-2 text-gray-700 dark:text-gray-300">
+              <ul className="list-disc list-inside mt-2">
                 {job.responsibilities.map((resp, idx) => (
                   <li key={idx}>{resp}</li>
                 ))}
@@ -109,7 +109,7 @@ export default function Resume() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-2 text-accent-light dark:text-accent-dark">
+          <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500">
             Education
           </h2>
           <p className="font-semibold">{resumeData.education.degree}</p>
@@ -119,7 +119,7 @@ export default function Resume() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-2 text-accent-light dark:text-accent-dark">
+          <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500">
             Skills
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -135,18 +135,18 @@ export default function Resume() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-4 text-accent-light dark:text-accent-dark">
+          <h2 className="text-2xl font-semibold mb-4 text-lightmode-accent-500 dark:text-darkmode-accent-500">
             Projects
           </h2>
           {resumeData.projects.map((project, index) => (
             <div key={index} className="mb-4">
               <h3 className="text-xl font-semibold">{project.name}</h3>
-              <p className="text-gray-700 dark:text-gray-300">
+              <p className="text-lightmode-text dark:text-darkmode-text">
                 {project.description}
               </p>
               <a
                 href={project.url}
-                className="text-accent-light dark:text-accent-dark hover:underline"
+                className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >

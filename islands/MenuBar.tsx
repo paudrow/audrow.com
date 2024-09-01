@@ -2,12 +2,11 @@ import { useEffect, useState } from "preact/hooks";
 import { Pages } from "../types.ts";
 import { JSX } from "preact";
 
-// SVG components
 const MenuIcon = () => (
   <svg
     viewBox="0 0 8 6"
     aria-hidden="true"
-    className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400"
+    className="ml-3 h-auto w-2 stroke-lightmode-text dark:stroke-darkmode-text group-hover:stroke-lightmode-text-hover dark:group-hover:stroke-darkmode-text-hover"
   >
     <path
       d="M1.75 1.75 4 4.25l2.25-2.5"
@@ -23,7 +22,7 @@ const CloseIcon = () => (
   <svg
     viewBox="0 0 24 24"
     aria-hidden="true"
-    className="h-6 w-6 text-zinc-500 dark:text-zinc-400"
+    className="h-6 w-6 stroke-lightmode-text dark:stroke-darkmode-text"
   >
     <path
       d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
@@ -36,9 +35,8 @@ const CloseIcon = () => (
   </svg>
 );
 
-// New components
 const LargeScreenMenu = ({ menuItems, isCurrentPage }: MenuProps) => (
-  <nav className="pointer-events-auto hidden md:block">
+  <nav className="pointer-events-auto hidden md:block h-12">
     <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
       {menuItems.map((item) => (
         <li key={item.display}>
@@ -72,14 +70,14 @@ const SmallScreenMenu = (
       isOpen
         ? "scale-100 opacity-100"
         : "scale-95 opacity-0 pointer-events-none"
-    }`}
+    } h-12`}
     style={{ "--button-width": "88.671875px" } as JSX.CSSProperties}
   >
     <div className="flex flex-row-reverse items-center justify-between">
       <button
         onClick={() => setIsOpen(false)}
         aria-label="Close menu"
-        className="-m-1 p-1"
+        className="-m-1 p-1 h-12"
         type="button"
       >
         <CloseIcon />
@@ -108,7 +106,6 @@ const SmallScreenMenu = (
   </div>
 );
 
-// Add currentPage prop to the Menu component
 export function MenuBar({ currentPage }: { currentPage: Pages }) {
   const [isOpen, setIsOpen] = useState(false);
 

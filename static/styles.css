@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --darkmode-heading: theme('colors.darkmode.heading');
+  --darkmode-text: theme('colors.darkmode.text');
+  --darkmode-bg-background: theme('colors.darkmode.bg-background');
+  --darkmode-bg-foreground: theme('colors.darkmode.bg-foreground');
+  --darkmode-bg-ring: theme('colors.darkmode.bg-ring');
+  --darkmode-accent-500: theme('colors.darkmode.accent-500');
+
+  --lightmode-heading: theme('colors.lightmode.heading');
+  --lightmode-text: theme('colors.lightmode.text');
+  --lightmode-bg-background: theme('colors.lightmode.bg-background');
+  --lightmode-bg-foreground: theme('colors.lightmode.bg-foreground');
+  --lightmode-bg-ring: theme('colors.lightmode.bg-ring');
+  --lightmode-accent-100: theme('colors.lightmode.accent-100');
+  --lightmode-accent-500: theme('colors.lightmode.accent-500');
+  --lightmode-accent-800: theme('colors.lightmode.accent-800');
+}
+
+@layer base {
+  body {
+    @apply bg-lightmode-bg-background text-lightmode-text dark:bg-darkmode-bg-background dark:text-darkmode-text;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-lightmode-heading dark:text-darkmode-heading;
+  }
+
+  p {
+    @apply text-lightmode-text dark:text-darkmode-text;
+  }
+}
