@@ -10,6 +10,7 @@ import * as $index from "./routes/index.tsx";
 import * as $project_slug_ from "./routes/project/[slug].tsx";
 import * as $projects from "./routes/projects.tsx";
 import * as $resume from "./routes/resume.tsx";
+import * as $resume_raw from "./routes/resume/raw.tsx";
 import * as $MenuBar from "./islands/MenuBar.tsx";
 import * as $ToggleDarkMode from "./islands/ToggleDarkMode.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -24,6 +25,7 @@ const manifest = {
     "./routes/project/[slug].tsx": $project_slug_,
     "./routes/projects.tsx": $projects,
     "./routes/resume.tsx": $resume,
+    "./routes/resume/raw.tsx": $resume_raw,
   },
   islands: {
     "./islands/MenuBar.tsx": $MenuBar,
