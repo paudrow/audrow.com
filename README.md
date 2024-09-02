@@ -69,7 +69,8 @@ To customize the content of the website, you can modify the following files:
 
 ## Resume Saving and Testing
 
-This project includes functionality to save the resume as a PDF and run tests to ensure the saved resume is up-to-date.
+This project includes functionality to save the resume as a PDF and run tests to
+ensure the saved resume is up-to-date.
 
 ### Saving the Resume
 
@@ -79,21 +80,26 @@ The resume can be saved as a PDF using the following command:
 deno task update-resume
 ```
 
-This command uses Puppeteer to render the resume page and save it as a PDF in the `static/` directory.
+This command uses Puppeteer to render the resume page and save it as a PDF in
+the `static/` directory.
 
 ### Testing the Resume
 
-To ensure that the saved resume is up-to-date with the current version on the website, you can run the following test:
+To ensure that the saved resume is up-to-date with the current version on the
+website, you can run the following test:
 
 ```
 deno task check-resume
 ```
 
-This test compares the text content of the saved PDF with the current version of the resume page. If there are any differences, the test will fail, indicating that the saved resume needs to be updated.
+This test compares the text content of the saved PDF with the current version of
+the resume page. If there are any differences, the test will fail, indicating
+that the saved resume needs to be updated.
 
 ## Continuous Integration
 
-This project uses GitHub Actions for continuous integration. The CI pipeline includes the following checks:
+This project uses GitHub Actions for continuous integration. The CI pipeline
+includes the following checks:
 
 1. Formatting check
 2. Linting
@@ -115,4 +121,5 @@ create a pull request with your changes.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file
+for details.
