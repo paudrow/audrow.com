@@ -53,6 +53,18 @@ const ResumeSchema = z.object({
   }),
 });
 
+const DownloadResumeButton = () => {
+  return (
+    <a
+      href={RESUME_URL}
+      download
+      className="inline-block bg-lightmode-accent-500 dark:bg-darkmode-accent-500 text-white py-2 px-4 rounded-lg hover:bg-lightmode-accent-600 dark:hover:bg-darkmode-accent-600 transition duration-300"
+    >
+      Download Resume (PDF)
+    </a>
+  );
+};
+
 export default function Resume() {
   const resumeData = ResumeSchema.parse({
     name: "Audrow Nash",
@@ -251,13 +263,7 @@ export default function Resume() {
         </section>
 
         <section className="text-center mb-6 print:hidden">
-          <a
-            href={RESUME_URL}
-            download
-            className="inline-block bg-lightmode-accent-500 dark:bg-darkmode-accent-500 text-white py-2 px-4 rounded-lg hover:bg-lightmode-accent-600 dark:hover:bg-darkmode-accent-600 transition duration-300"
-          >
-            Download Resume (PDF)
-          </a>
+          <DownloadResumeButton />
         </section>
 
         <section className="print:text-sm print:break-inside-avoid">
@@ -424,6 +430,10 @@ export default function Resume() {
               {resumeData.interests.personal.join(", ")}
             </p>
           </div>
+        </section>
+
+        <section className="text-center pt-16 print:hidden">
+          <DownloadResumeButton />
         </section>
       </div>
     </PageLayout>
