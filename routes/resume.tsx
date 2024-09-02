@@ -1,5 +1,6 @@
 import { PageLayout } from "../components/PageLayout.tsx";
 import * as z from "npm:zod";
+import { RESUME_URL } from "../constants.ts";
 
 const ResumeSchema = z.object({
   name: z.string(),
@@ -7,184 +8,422 @@ const ResumeSchema = z.object({
   contact: z.object({
     email: z.string(),
     location: z.string(),
+    phone: z.string(),
+    website: z.string(),
+    github: z.string(),
   }),
   summary: z.string(),
   experience: z.array(z.object({
-    company: z.string(),
+    organization: z.string(),
+    url: z.string().optional(),
     position: z.string(),
     duration: z.string(),
     responsibilities: z.array(z.string()),
+    hide: z.boolean().optional(),
   })),
-  education: z.object({
+  education: z.array(z.object({
     degree: z.string(),
     institution: z.string(),
+    url: z.string(),
     year: z.string(),
-  }),
-  skills: z.array(z.string()),
+    details: z.string(),
+  })),
+  skills: z.array(z.object({
+    category: z.string(),
+    strongest: z.array(z.string()),
+    familiar: z.array(z.string()),
+  })),
   projects: z.array(z.object({
     name: z.string(),
     description: z.string(),
-    url: z.string(),
+    duration: z.string(),
+    role: z.string(),
+    url: z.string().optional(),
+    hide: z.boolean().optional(),
   })),
+  awards: z.array(z.object({
+    name: z.string(),
+    organization: z.string(),
+    url: z.string(),
+    year: z.string(),
+  })),
+  interests: z.object({
+    professional: z.array(z.string()),
+    personal: z.array(z.string()),
+  }),
 });
 
 export default function Resume() {
   const resumeData = ResumeSchema.parse({
     name: "Audrow Nash",
-    title: "Software Engineer & Robotics Enthusiast",
+    title: "Software Engineer",
     contact: {
       email: "audrow@hey.com",
       location: "San Antonio, TX",
+      phone: "650-963-6642",
+      website: "https://audrow.com",
+      github: "https://github.com/audrow",
     },
     summary:
-      "Passionate software engineer with expertise in robotics, web development, and open-source contributions. Experienced in creating educational content and fostering community engagement in the robotics field.",
+      "Software engineer at Intrinsic AI and host of the Audrow Nash Podcast. Experienced in robotics and middleware development, with a strong background in research and open-source contributions.",
     experience: [
       {
-        company: "Open Robotics",
+        organization: "Intrinsic",
+        url: "https://intrinsic.ai",
         position: "Software Engineer",
-        duration: "2020 - Present",
+        duration: "01/2023 - Present",
         responsibilities: [
-          "Develop and maintain core ROS 2 packages",
-          "Create educational content for the robotics community",
-          "Engage with the open-source robotics community",
+          "Working on cutting-edge robotics and AI technologies",
+          "Continued work on ROS 2 following the acquisition of Open Robotics",
         ],
       },
       {
-        company: "Robotic Materials",
-        position: "Robotics Software Engineer",
-        duration: "2019 - 2020",
+        organization: "Open Robotics (acquired by Intrinsic)",
+        url: "https://www.openrobotics.org",
+        position: "Software Engineer",
+        duration: "01/2021 - 12/2022",
         responsibilities: [
-          "Developed software for robotic manipulation tasks",
-          "Implemented computer vision algorithms for object detection",
-          "Contributed to the company's ROS-based software stack",
+          "Made core changes to ROS 2's C++ client library, including redesigning fundamental components to use C++17 features",
+          "Solved several race conditions in ROS 2's C++ client library's multi-threaded executor",
+          "Managed community contributions to various public repositories",
+        ],
+      },
+      {
+        organization: "University of Southern California",
+        url: "https://www.usc.edu",
+        position: "Research Assistant",
+        duration: "05/2018 - 12/2020",
+        responsibilities: [
+          "Designed and implemented an 8-week in-home interaction using ROS 1 and Python",
+          "Mentored five undergraduate and three master's students",
+        ],
+      },
+      {
+        organization: "1X Robotics (formerly Halodi Robotics)",
+        url: "https://1x.ai",
+        position: "Intern",
+        duration: "06/2019 - 08/2019",
+        responsibilities: [
+          "Implemented a way for their humanoid robot to mirror arm motions",
+        ],
+        hide: true,
+      },
+      {
+        organization: "University of Michigan",
+        url: "https://umich.edu",
+        position: "Research Assistant",
+        duration: "08/2015 - 05/2018",
+        responsibilities: [
+          "Implemented a fast 2D rigid body simulator in C++",
+          "Used the simulator to tune control parameters for a bipedal robot",
         ],
       },
     ],
-    education: {
-      degree: "Ph.D. in Mechanical Engineering",
-      institution: "University of California, San Diego",
-      year: "2020",
-    },
+    education: [
+      {
+        degree: "MS in Computer Science",
+        institution: "University of Southern California",
+        url: "https://www.usc.edu",
+        year: "2020",
+        details: "Advisor: Maja Matarić",
+      },
+      {
+        degree: "MS in Electrical Engineering",
+        institution: "University of Michigan",
+        url: "https://umich.edu",
+        year: "2018",
+        details: "Advisors: David Remy and Edwin Olson",
+      },
+      {
+        degree: "BS in Electrical Engineering",
+        institution: "University of North Carolina at Charlotte",
+        url: "https://www.uncc.edu",
+        year: "2014",
+        details: "Advisor: James Conrad",
+      },
+    ],
     skills: [
-      "Python",
-      "C++",
-      "ROS/ROS 2",
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Node.js",
-      "Git",
-      "Docker",
+      {
+        category: "Programming",
+        strongest: ["Python", "C/C++", "JavaScript/TypeScript"],
+        familiar: ["Rust", "Go", "Bash", "Lua"],
+      },
+      {
+        category: "Robotics & Systems",
+        strongest: ["ROS 2", "Ubuntu/Debian"],
+        familiar: ["ROS 1", "Gazebo"],
+      },
+      {
+        category: "Web & DevOps",
+        strongest: ["Deno", "Git", "Docker"],
+        familiar: ["Node.js", "Angular", "React", "PostgreSQL"],
+      },
     ],
     projects: [
       {
-        name: "ROS 2 Podcast",
+        name: "Audrow Nash Podcast",
         description:
-          "Host of a podcast discussing Robot Operating System (ROS) 2 and its ecosystem",
-        url: "https://www.ros2podcast.com/",
+          "Host of a podcast discussing robotics and AI technologies",
+        duration: "Present",
+        role: "Host",
+        url: "https://www.audrownashpodcast.com/",
       },
       {
-        name: "Open Robotics Contributions",
+        name: "Sense Think Act Podcast",
         description:
-          "Significant contributions to various ROS 2 packages and documentation",
-        url: "https://github.com/ros2",
+          "Host of a podcast discussing robotics and AI technologies",
+        duration: "03/2019 - 05/2023",
+        role: "Host",
+        url: "https://www.sensethinkact.com/",
+        hide: true,
+      },
+      {
+        name: "Robohub Podcast",
+        description:
+          "Led an international team of 15 people in publishing 160 podcast episodes and raised donations of around 20k USD",
+        duration: "03/2014 - 05/2020",
+        role: "Podcast Director",
+        url: "https://robohub.org/podcast/",
+        hide: true,
       },
     ],
+    awards: [
+      {
+        name: "Graduate Research Fellowship",
+        organization: "National Science Foundation",
+        url:
+          "https://ece.engin.umich.edu/stories/audrow-nash-earns-nsf-fellowship-for-unmanned-aerial-vehicle-research",
+        year: "2016",
+      },
+    ],
+    interests: {
+      professional: [
+        "Robot middleware",
+        "Manufacturing",
+        "Simulation",
+        "Web development",
+      ],
+      personal: ["Improv", "Podcasting", "Rock climbing"],
+    },
   });
 
   return (
     <PageLayout currentPage="resume">
-      <div className="space-y-8">
-        <section className="text-center">
-          <h1 className="text-4xl font-bold text-lightmode-accent-500 dark:text-darkmode-accent-500">
+      <div className="space-y-6 print:space-y-4">
+        <section className="text-center mb-6 print:mb-4 print:break-inside-avoid">
+          <h1 className="text-4xl font-bold text-lightmode-accent-500 dark:text-darkmode-accent-500 mb-2 print:text-3xl">
             {resumeData.name}
           </h1>
-          <p className="text-xl">
+          <p className="text-xl mb-4 print:text-lg print:mb-2">
             {resumeData.title}
           </p>
-          <div className="mt-2 text-sm">
-            <p>{resumeData.contact.email}</p>
-            <p>{resumeData.contact.location}</p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm print:text-xs">
+            <a
+              href={`mailto:${resumeData.contact.email}`}
+              className="hover:underline"
+            >
+              {resumeData.contact.email}
+            </a>
+            <span>{resumeData.contact.location}</span>
+            <a
+              href={`tel:${resumeData.contact.phone}`}
+              className="hover:underline"
+            >
+              {resumeData.contact.phone}
+            </a>
+            <a
+              href={resumeData.contact.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              {resumeData.contact.website.replace(/^https?:\/\//, "")}
+            </a>
+            <a
+              href={resumeData.contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              GitHub
+            </a>
           </div>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500">
+        <section className="text-center mb-6 print:hidden">
+          <a
+            href={RESUME_URL}
+            download
+            className="inline-block bg-lightmode-accent-500 dark:bg-darkmode-accent-500 text-white py-2 px-4 rounded-lg hover:bg-lightmode-accent-600 dark:hover:bg-darkmode-accent-600 transition duration-300"
+          >
+            Download Resume (PDF)
+          </a>
+        </section>
+
+        <section className="print:text-sm print:break-inside-avoid">
+          <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500 print:text-xl">
             Summary
           </h2>
-          <p>
-            {resumeData.summary}
-          </p>
+          <p>{resumeData.summary}</p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4 text-lightmode-accent-500 dark:text-darkmode-accent-500">
+        <section className="print:text-sm print:break-inside-avoid">
+          <h2 className="text-2xl font-semibold mb-3 text-lightmode-accent-500 dark:text-darkmode-accent-500 print:text-xl">
             Experience
           </h2>
-          {resumeData.experience.map((job, index) => (
-            <div key={index} className="mb-4">
-              <h3 className="text-xl font-semibold">{job.position}</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                {job.company} | {job.duration}
-              </p>
-              <ul className="list-disc list-inside mt-2">
-                {job.responsibilities.map((resp, idx) => (
-                  <li key={idx}>{resp}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {resumeData.experience
+            .filter((job) => !job.hide)
+            .map((job, index) => (
+              <div key={index} className="mb-4 print:mb-2">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-xl font-semibold print:text-lg">
+                      {job.position}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {job.url
+                        ? (
+                          <a
+                            href={job.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            {job.organization}
+                          </a>
+                        )
+                        : (
+                          job.organization
+                        )}
+                    </p>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {job.duration}
+                  </p>
+                </div>
+                <ul className="list-disc list-inside mt-2 print:mt-1">
+                  {job.responsibilities.map((resp, idx) => (
+                    <li key={idx}>{resp}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
         </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500">
-            Education
-          </h2>
-          <p className="font-semibold">{resumeData.education.degree}</p>
-          <p className="text-gray-600 dark:text-gray-400">
-            {resumeData.education.institution}, {resumeData.education.year}
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500">
+        <section className="print:text-sm print:break-inside-avoid">
+          <h2 className="text-2xl font-semibold mb-3 text-lightmode-accent-500 dark:text-darkmode-accent-500 print:text-xl">
             Skills
           </h2>
-          <div className="flex flex-wrap gap-2 print-hide">
-            {resumeData.skills.map((skill, index) => (
-              <span
-                key={index}
-                className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-          <p className="hidden print-only">
-            {resumeData.skills.join(", ")}
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4 text-lightmode-accent-500 dark:text-darkmode-accent-500">
-            Projects
-          </h2>
-          {resumeData.projects.map((project, index) => (
-            <div key={index} className="mb-4">
-              <h3 className="text-xl font-semibold">{project.name}</h3>
-              <p className="text-lightmode-text dark:text-darkmode-text">
-                {project.description}
+          {resumeData.skills.map((skill, index) => (
+            <div key={index} className="mb-3 print:mb-2">
+              <h3 className="text-xl font-semibold print:text-lg">
+                {skill.category}
+              </h3>
+              <p>
+                <strong>Strongest:</strong> {skill.strongest.join(", ")}
+                {skill.familiar.length > 0 && (
+                  <>
+                    <span className="mx-2">|</span>
+                    <strong>Familiar:</strong> {skill.familiar.join(", ")}
+                  </>
+                )}
               </p>
-              <a
-                href={project.url}
-                className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn more
-              </a>
             </div>
           ))}
+        </section>
+
+        <section className="print:text-sm print:break-inside-avoid">
+          <h2 className="text-2xl font-semibold mb-3 text-lightmode-accent-500 dark:text-darkmode-accent-500 print:text-xl">
+            Projects
+          </h2>
+          {resumeData.projects
+            .filter((project) => !project.hide)
+            .map((project, index) => (
+              <div key={index} className="mb-3 print:mb-2">
+                <h3 className="text-xl font-semibold print:text-lg">
+                  {project.name}
+                </h3>
+                <p className="text-lightmode-text dark:text-darkmode-text">
+                  {project.description}
+                </p>
+                <p className="text-lightmode-text dark:text-darkmode-text">
+                  {project.duration} | {project.role}
+                </p>
+                {project.url && (
+                  <a
+                    href={project.url}
+                    className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Learn more
+                  </a>
+                )}
+              </div>
+            ))}
+        </section>
+
+        <section className="print:text-sm print:break-inside-avoid">
+          <h2 className="text-2xl font-semibold mb-3 text-lightmode-accent-500 dark:text-darkmode-accent-500 print:text-xl">
+            Education
+          </h2>
+          {resumeData.education.map((edu, index) => (
+            <div key={index} className="mb-3 print:mb-2">
+              <p className="font-semibold">{edu.degree}</p>
+              <p className="text-gray-600 dark:text-gray-400">
+                <a
+                  href={edu.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  {edu.institution}
+                </a>, {edu.year} | {edu.details}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        <section className="print:text-sm print:break-inside-avoid">
+          <h2 className="text-2xl font-semibold mb-3 text-lightmode-accent-500 dark:text-darkmode-accent-500 print:text-xl">
+            Awards
+          </h2>
+          {resumeData.awards.map((award, index) => (
+            <div key={index} className="mb-3 print:mb-2">
+              <h3 className="text-xl font-semibold print:text-lg">
+                {award.name}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                {award.organization} | {award.year}
+              </p>
+              {award.url && (
+                <a
+                  href={award.url}
+                  className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn more
+                </a>
+              )}
+            </div>
+          ))}
+        </section>
+
+        <section className="print:text-sm print:break-inside-avoid">
+          <h2 className="text-2xl font-semibold mb-3 text-lightmode-accent-500 dark:text-darkmode-accent-500 print:text-xl">
+            Interests
+          </h2>
+          <div>
+            <p>
+              <strong>Professional:</strong>{" "}
+              {resumeData.interests.professional.join(", ")}
+            </p>
+            <p>
+              <strong>Personal:</strong>{" "}
+              {resumeData.interests.personal.join(", ")}
+            </p>
+          </div>
         </section>
       </div>
     </PageLayout>
