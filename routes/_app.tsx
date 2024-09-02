@@ -8,6 +8,7 @@ export default function App({ Component }: PageProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>audrow.com</title>
         <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="/print.css" media="print" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

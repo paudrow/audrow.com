@@ -1,0 +1,24 @@
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  header, footer, .non-printable {
+    display: none;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  /* h1, h2, h3, h4, h5, h6 {
+    color: var(--lightmode-heading) !important;
+  }
+
+  p, span, li {
+    color: black !important;
+  } */
+
+  /* Add any additional styles to format the resume for printing */
+}
