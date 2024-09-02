@@ -10,7 +10,7 @@ async function getTextFromPdf(
   const pagesWithText = await pdfText(pdf);
   let out = "";
   Object.values(pagesWithText).forEach((page) => {
-    out += withoutSpaces ? page.replaceAll(" ", "") : page;
+    out += withoutSpaces ? page.replaceAll(" ", "").replaceAll("\n", "") : page;
   });
   return out;
 }
