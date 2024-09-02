@@ -150,7 +150,7 @@ export default function Resume() {
           <h2 className="text-2xl font-semibold mb-2 text-lightmode-accent-500 dark:text-darkmode-accent-500">
             Skills
           </h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 print-hide">
             {resumeData.skills.map((skill, index) => (
               <span
                 key={index}
@@ -160,6 +160,9 @@ export default function Resume() {
               </span>
             ))}
           </div>
+          <p className="hidden print-only">
+            {resumeData.skills.join(", ")}
+          </p>
         </section>
 
         <section>

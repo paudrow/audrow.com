@@ -1,7 +1,18 @@
 @media print {
+  @page {
+    margin: 0;
+  }
+
+  html {
+    background: white !important;
+    color: black !important;
+  }
+
   body {
     background: white;
     color: black;
+    margin: 0.25in;
+    padding: 0.25in;
   }
 
   header, footer, .non-printable {
@@ -12,13 +23,29 @@
     display: block;
   }
 
-  /* h1, h2, h3, h4, h5, h6 {
-    color: var(--lightmode-heading) !important;
+  .print-hide {
+    display: none;
   }
 
-  p, span, li {
-    color: black !important;
-  } */
+  .print-no-margin-or-padding {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Reset ring styles */
+  * {
+    box-shadow: none !important;
+    outline: none !important;
+  }
 
   /* Add any additional styles to format the resume for printing */
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: -0.125em;
+    margin-bottom: -0.125em;
+  }
+
+  p, ul, ol, li, span {
+    margin-top: -0.125em;
+    margin-bottom: -0.125em;
+  }
 }
