@@ -1,27 +1,16 @@
 import { PageLayout } from "../../components/PageLayout.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { Project } from "../../types.ts";
+import { getProject } from "../../utils/projects.ts";
+import { Button } from "../../components/Button.tsx";
 
 export const handler: Handlers<Project | null> = {
-  GET(_, ctx) {
+  async GET(_, ctx) {
     const { slug } = ctx.params;
-    // Here you would typically fetch the project data from a database or API
-    // For this example, we'll just return a mock project
-    const project = {
-      slug,
-      title: slug.split("-").map((word) =>
-        word.charAt(0).toUpperCase() + word.slice(1)
-      ).join(" "),
-      description: `This is the project page for ${slug}.`,
-    };
+    const project = await getProject(slug);
     return ctx.render(project);
   },
 };
-
-interface Project {
-  slug: string;
-  title: string;
-  description: string;
-}
 
 export default function ProjectPage({ data }: PageProps<Project | null>) {
   if (!data) {
@@ -39,12 +28,45 @@ export default function ProjectPage({ data }: PageProps<Project | null>) {
 
   return (
     <PageLayout currentPage="projects">
-      <div className="space-y-4">
-        <h1 className="text-3xl font-bold">{data.title}</h1>
-        <p className="text-xl">
-          Project slug: <span className="font-semibold">{data.slug}</span>
+      <div className="space-y-6">
+        <h1 className="text-4xl font-bold">{data.name}</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400">
+          {data.description}
         </p>
-        <p className="text-gray-600 dark:text-gray-400">{data.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {data.tags &&
+            data.tags.map((tag) => (
+              <span
+                key={tag}
+                className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-md text-sm"
+              >
+                {tag}
+              </span>
+            ))}
+        </div>
+        {data.url && (
+          <div className="mt-4">
+            <Button
+              as="a"
+              href={data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Project
+            </Button>
+          </div>
+        )}
+        {data.image && (
+          <img
+            src={data.image}
+            alt={data.name}
+            className="max-w-full h-auto rounded-lg shadow-md"
+          />
+        )}
+        <div
+          className="prose dark:prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: data.content }}
+        />
       </div>
     </PageLayout>
   );

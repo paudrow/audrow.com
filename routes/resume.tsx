@@ -1,6 +1,7 @@
 import { PageLayout } from "../components/PageLayout.tsx";
 import * as z from "npm:zod";
 import { RESUME_URL } from "../constants.ts";
+import { Button } from "../components/Button.tsx";
 
 const ResumeSchema = z.object({
   name: z.string(),
@@ -55,13 +56,13 @@ const ResumeSchema = z.object({
 
 const DownloadResumeButton = () => {
   return (
-    <a
+    <Button
+      as="a"
       href={RESUME_URL}
       download
-      className="inline-block bg-lightmode-accent-500 dark:bg-darkmode-accent-500 text-white py-2 px-4 rounded-lg hover:bg-lightmode-accent-600 dark:hover:bg-darkmode-accent-600 transition duration-300"
     >
       Download Resume (PDF)
-    </a>
+    </Button>
   );
 };
 
