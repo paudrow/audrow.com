@@ -32,7 +32,7 @@ Deno.test("Resume is up-to-date", async () => {
     assertEquals(
       savedResumeText,
       newResumeText,
-      "The saved resume text is not up-to-date with the current version",
+      "The saved resume text is not up-to-date with the current version. Please run 'deno task update-resume' to update it.",
     );
   } catch (e) {
     console.error(e);

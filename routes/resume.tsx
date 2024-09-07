@@ -1,6 +1,6 @@
 import { PageLayout } from "../components/PageLayout.tsx";
 import * as z from "npm:zod";
-import { RESUME_URL } from "../constants.ts";
+import { CONTACT_INFO, RESUME_URL, SOCIAL_LINKS } from "../constants.ts";
 import { Button } from "../components/Button.tsx";
 
 const ResumeSchema = z.object({
@@ -12,6 +12,8 @@ const ResumeSchema = z.object({
     phone: z.string(),
     website: z.string(),
     github: z.string(),
+    linkedin: z.string(),
+    x: z.string(),
   }),
   summary: z.string(),
   experience: z.array(z.object({
@@ -66,16 +68,26 @@ const DownloadResumeButton = () => {
   );
 };
 
+const formatUrl = (url: string, maxLength: number = 30) => {
+  const formatted = url.replace(/https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  if (formatted.length > maxLength) {
+    return new URL(url).hostname.replace(/^www\./, "");
+  }
+  return formatted;
+};
+
 export default function Resume() {
   const resumeData = ResumeSchema.parse({
-    name: "Audrow Nash",
-    title: "Software Engineer",
+    name: CONTACT_INFO.NAME,
+    title: CONTACT_INFO.TITLE,
     contact: {
-      email: "audrow@hey.com",
-      location: "San Antonio, TX",
-      phone: "650-963-6642",
-      website: "https://audrow.com",
-      github: "https://github.com/audrow",
+      email: CONTACT_INFO.EMAIL,
+      location: CONTACT_INFO.LOCATION,
+      phone: CONTACT_INFO.PHONE,
+      website: CONTACT_INFO.WEBSITE,
+      github: SOCIAL_LINKS.GITHUB,
+      linkedin: SOCIAL_LINKS.LINKEDIN,
+      x: SOCIAL_LINKS.X,
     },
     summary:
       "Software engineer at Intrinsic AI and host of the Audrow Nash Podcast. Experienced in robotics and middleware development, with a strong background in research and open-source contributions.",
@@ -239,18 +251,12 @@ export default function Resume() {
             </a>
             <span>{resumeData.contact.location}</span>
             <a
-              href={`tel:${resumeData.contact.phone}`}
-              className="hover:underline"
-            >
-              {resumeData.contact.phone}
-            </a>
-            <a
               href={resumeData.contact.website}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"
             >
-              {resumeData.contact.website.replace(/^https?:\/\//, "")}
+              {formatUrl(resumeData.contact.website)}
             </a>
             <a
               href={resumeData.contact.github}
@@ -258,7 +264,15 @@ export default function Resume() {
               rel="noopener noreferrer"
               className="hover:underline"
             >
-              GitHub
+              {formatUrl(resumeData.contact.github)}
+            </a>
+            <a
+              href={resumeData.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              {formatUrl(resumeData.contact.linkedin)}
             </a>
           </div>
         </section>
@@ -355,17 +369,20 @@ export default function Resume() {
                 </p>
                 <p className="text-lightmode-text dark:text-darkmode-text">
                   {project.duration} | {project.role}
+                  {project.url && (
+                    <>
+                      {" | "}
+                      <a
+                        href={project.url}
+                        className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {formatUrl(project.url)}
+                      </a>
+                    </>
+                  )}
                 </p>
-                {project.url && (
-                  <a
-                    href={project.url}
-                    className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Learn more
-                  </a>
-                )}
               </div>
             ))}
         </section>
@@ -402,17 +419,20 @@ export default function Resume() {
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
                 {award.organization} | {award.year}
+                {award.url && (
+                  <>
+                    {" | "}
+                    <a
+                      href={award.url}
+                      className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {formatUrl(award.url)}
+                    </a>
+                  </>
+                )}
               </p>
-              {award.url && (
-                <a
-                  href={award.url}
-                  className="text-lightmode-accent-500 dark:text-darkmode-accent-500 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn more
-                </a>
-              )}
             </div>
           ))}
         </section>

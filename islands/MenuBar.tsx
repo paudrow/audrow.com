@@ -2,6 +2,7 @@ import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { Pages } from "../types.ts";
 import { JSX } from "preact";
+import { PODCAST_URL } from "../constants.ts";
 
 const MenuIcon = () => (
   <svg
@@ -118,7 +119,7 @@ export function MenuBar({ currentPage }: { currentPage: Pages }) {
     {
       display: "Podcast",
       slug: undefined,
-      path: "https://audrownashpodcast.com",
+      path: PODCAST_URL,
       external: true,
     },
   ];

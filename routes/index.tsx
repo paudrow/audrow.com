@@ -5,6 +5,7 @@ import {
   XIcon,
   YouTubeIcon,
 } from "../components/Icons.tsx";
+import { SOCIAL_LINKS } from "../constants.ts";
 
 export default function Home() {
   return (
@@ -24,19 +25,31 @@ export default function Home() {
           open-source contributions.
         </p>
         <div className="mt-6 flex gap-6">
-          <a className="group -m-1 p-1" aria-label="Follow on X" href="#">
+          <a
+            className="group -m-1 p-1"
+            aria-label="Follow on X"
+            href={SOCIAL_LINKS.X}
+          >
             <XIcon className="h-6 w-6 fill-lightmode-text transition group-hover:fill-lightmode-text-hover dark:fill-darkmode-text dark:group-hover:fill-darkmode-text-hover" />
           </a>
-          <a className="group -m-1 p-1" aria-label="Follow on YouTube" href="#">
+          <a
+            className="group -m-1 p-1"
+            aria-label="Follow on YouTube"
+            href={SOCIAL_LINKS.YOUTUBE}
+          >
             <YouTubeIcon className="h-6 w-6 fill-lightmode-text transition group-hover:fill-lightmode-text-hover dark:fill-darkmode-text dark:group-hover:fill-darkmode-text-hover" />
           </a>
-          <a className="group -m-1 p-1" aria-label="Follow on GitHub" href="#">
+          <a
+            className="group -m-1 p-1"
+            aria-label="Follow on GitHub"
+            href={SOCIAL_LINKS.GITHUB}
+          >
             <GitHubIcon className="h-6 w-6 fill-lightmode-text transition group-hover:fill-lightmode-text-hover dark:fill-darkmode-text dark:group-hover:fill-darkmode-text-hover" />
           </a>
           <a
             className="group -m-1 p-1"
             aria-label="Follow on LinkedIn"
-            href="#"
+            href={SOCIAL_LINKS.LINKEDIN}
           >
             <LinkedInIcon className="h-6 w-6 fill-lightmode-text transition group-hover:fill-lightmode-text-hover dark:fill-darkmode-text dark:group-hover:fill-darkmode-text-hover" />
           </a>
