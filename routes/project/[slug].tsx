@@ -13,7 +13,9 @@ export const handler: Handlers<Project | null> = {
 };
 
 export default function ProjectPage(props: PageProps<Project | null>) {
-  const { data, url } = props;
+  const url = new URL(props.url);
+  const { data } = props;
+
   if (!data) {
     return (
       <PageLayout

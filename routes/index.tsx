@@ -280,6 +280,7 @@ function ResumeButtons() {
 }
 
 export default async function Home(props: PageProps) {
+  const url = new URL(props.url);
   const allProjects = await getProjects();
   const recentProjects = allProjects
     .sort((a, b) => b.date.getTime() - a.date.getTime())
@@ -288,7 +289,7 @@ export default async function Home(props: PageProps) {
   return (
     <PageLayout
       currentPage="home"
-      url={props.url}
+      url={url}
       title="Home"
       description="Audrow Nash's personal website"
     >

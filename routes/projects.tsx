@@ -5,7 +5,7 @@ import { PageProps } from "$fresh/server.ts";
 
 export default async function Projects(props: PageProps) {
   const { projects, tags } = await getProjectsAndTags();
-  const { url } = props;
+  const url = new URL(props.url);
 
   return (
     <PageLayout currentPage="projects" title="Projects" url={url}>

@@ -2,7 +2,7 @@ import { PageLayout } from "../components/PageLayout.tsx";
 import { PageProps } from "$fresh/server.ts";
 
 export default function Error404(props: PageProps) {
-  const { url } = props;
+  const url = new URL(props.url);
   return (
     <PageLayout
       currentPage={undefined}

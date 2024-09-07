@@ -28,7 +28,7 @@ function SocialLink(
 }
 
 export default function Contact(props: PageProps) {
-  const { url } = props;
+  const url = new URL(props.url);
   return (
     <PageLayout
       currentPage="contact"

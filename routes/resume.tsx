@@ -24,7 +24,7 @@ const formatUrl = (url: string, maxLength: number = 30) => {
 };
 
 export default function Resume(props: PageProps) {
-  const { url } = props;
+  const url = new URL(props.url);
   const resumeData = RESUME_DATA;
 
   return (
