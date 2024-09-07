@@ -53,7 +53,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     company: "Open Robotics (acquired by Intrinsic AI)",
     role: "Software Engineer",
     startDate: "2021",
-    endDate: "2023",
+    endDate: "2022",
     logo: "/job-logos/open-robotics.jpeg",
   },
 ];
