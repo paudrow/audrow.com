@@ -10,9 +10,8 @@ his work in robotics, software engineering, and podcasting. The site includes
 the following main sections:
 
 - Home
-- About
-- Resume
 - Projects
+- Resume
 - Contact
 
 ## Technologies Used
@@ -62,9 +61,8 @@ https://deno.land/manual/getting_started/installation
 To customize the content of the website, you can modify the following files:
 
 - `routes/index.tsx`: Update the content of the home page
-- `routes/about.tsx`: Modify the about page content
-- `routes/resume.tsx`: Update the resume information
 - `routes/projects.tsx`: Add or modify project information
+- `routes/resume.tsx`: Update the resume information
 - `routes/contact.tsx`: Update contact form or contact information
 
 ## Resume Saving and Testing
@@ -110,9 +108,9 @@ You can find the CI configuration in the `.github/workflows/ci.yml` file.
 
 ## Deployment
 
-This project can be deployed to any platform that supports Deno, such as Deno
-Deploy. For more information on deploying Fresh projects, refer to the
-[Fresh documentation](https://fresh.deno.dev/docs/concepts/deploying).
+This project is deployed using Deno Deploy. The deployment process is automated
+through GitHub Actions. You can find the deployment configuration in the
+`.github/workflows/deploy.yml` file.
 
 ## Contributing
 
