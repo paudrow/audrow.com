@@ -1,13 +1,13 @@
 ---
 name: "Audrow Nash Podcast Website"
-slug: "audrownashpodcast-v1"
 description: "Official website for the Audrow Nash Podcast, built with Fresh and Deno."
 url: "https://github.com/audrow-nash-podcast/audrownashpodcast.com"
+deploymentUrl: https://audrownashpodcast.com
 status: "Active"
 version: "1"
 pastVersions: []
 date: 2024-08-01
-tags: ["Deno", "Fresh", "Preact", "Tailwind CSS", "Podcast", "Website"]
+tags: ["Typescript", "Deno", "Fresh", "Preact", "Tailwind CSS", "Podcast", "Website"]
 ---
 
 The Audrow Nash Podcast website is a modern, responsive platform designed to

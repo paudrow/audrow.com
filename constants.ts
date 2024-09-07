@@ -20,7 +20,6 @@ export const CONTACT_INFO = {
 };
 
 export const MENU_ITEMS: MenuItem[] = [
-  { display: "About", slug: "about", path: "/about" },
   { display: "Resume", slug: "resume", path: "/resume" },
   { display: "Projects", slug: "projects", path: "/projects" },
   { display: "Contact", slug: "contact", path: "/contact" },

@@ -44,18 +44,28 @@ export default function ProjectPage({ data }: PageProps<Project | null>) {
               </span>
             ))}
         </div>
-        {data.url && (
-          <div className="mt-4">
+        <div className="flex flex-wrap gap-4 mt-4">
+          {data.deploymentUrl && (
+            <Button
+              as="a"
+              href={data.deploymentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Live Site
+            </Button>
+          )}
+          {data.url && (
             <Button
               as="a"
               href={data.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visit Project
+              View Source
             </Button>
-          </div>
-        )}
+          )}
+        </div>
         {data.image && (
           <img
             src={data.image}

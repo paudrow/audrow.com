@@ -4,6 +4,7 @@ export const ProjectFrontmatterSchema = z.object({
   name: z.string(),
   description: z.string(),
   url: z.string().optional(),
+  deploymentUrl: z.string().optional(),
   image: z.string().optional(),
   status: z.string(),
   version: z.string().optional(),

@@ -1,6 +1,5 @@
 ---
 name: "Yet Another Testcase Manager"
-slug: "yatm-v2"
 description: "A tool for generating test cases from requirements for manual testing, with GitHub integration."
 url: "https://github.com/paudrow/yatm-v2"
 status: "Used regularly for ROS 2 and Gazebo releases"
