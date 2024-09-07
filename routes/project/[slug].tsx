@@ -45,6 +45,28 @@ export default function ProjectPage(props: PageProps<Project | null>) {
         <p className="text-xl text-gray-600 dark:text-gray-400">
           {data.description}
         </p>
+        <div className="flex flex-wrap items-center gap-4">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            Completed: {new Date(data.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </span>
+          <span
+            className={`text-sm px-2 py-1 rounded-full ${
+              data.status === "Actively used"
+                ? "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100"
+                : data.status === "Used occasionally"
+                ? "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100"
+                : data.status === "Inactive"
+                ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100"
+                : "bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100"
+            }`}
+          >
+            {data.status}
+          </span>
+        </div>
         <div className="flex flex-wrap gap-2">
           {data.tags &&
             data.tags.map((tag) => (
