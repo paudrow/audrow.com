@@ -8,7 +8,6 @@ import {
 import { PROJECTS_URL, RESUME_FILE_URL, SOCIAL_LINKS } from "../constants.ts";
 import { getProjects } from "../utils/projects.ts";
 import { Project } from "../types.ts";
-import { Button } from "../components/Button.tsx";
 import { WORK_EXPERIENCE } from "../constants.ts";
 import { WorkExperience } from "../types.ts";
 
