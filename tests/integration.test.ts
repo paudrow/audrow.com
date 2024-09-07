@@ -18,14 +18,17 @@ Deno.test("Integration tests - Page loading and titles", async (t) => {
   // Test menu items
   for (const item of MENU_ITEMS) {
     if (!item.external) {
-      await t.step(`${item.display} page loads with correct title`, async () => {
-        await page.goto(BASE_URL + item.path);
-        const title = await page.evaluate(() => document.title);
-        assert(
-          title === `${item.display} | Audrow Nash`,
-          `${item.display} page title is incorrect`
-        );
-      });
+      await t.step(
+        `${item.display} page loads with correct title`,
+        async () => {
+          await page.goto(BASE_URL + item.path);
+          const title = await page.evaluate(() => document.title);
+          assert(
+            title === `${item.display} | Audrow Nash`,
+            `${item.display} page title is incorrect`,
+          );
+        },
+      );
     }
   }
 
@@ -37,14 +40,14 @@ Deno.test("Integration tests - Page loading and titles", async (t) => {
       const title = await page.evaluate(() => document.title);
       assert(
         title === `${project.name} Project | Audrow Nash`,
-        `Project page for ${project.name} title is incorrect`
+        `Project page for ${project.name} title is incorrect`,
       );
 
       // Check if the project name is present on the page
       const content = await page.content();
       assert(
         content.includes(project.name),
-        `Project page for ${project.name} does not contain the project name`
+        `Project page for ${project.name} does not contain the project name`,
       );
     }
   });
