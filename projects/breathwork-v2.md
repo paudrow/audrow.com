@@ -1,13 +1,13 @@
 ---
-name: "Breathwork V2"
+name: "Breathwork Web App"
 description: "A simple app to help you do breathwork exercises without counting, with customizable breathing patterns and visual guidance."
 url: "https://github.com/paudrow/breathwork-v2"
 deploymentUrl: "https://breathwork.audrow.com/"
-status: "Active"
+status: "Used occasionally"
 version: "2"
 pastVersions: []
 date: 2024-05-31
-tags: ["TypeScript", "Deno", "Fresh", "Breathwork", "Health", "Web Application"]
+tags: ["TypeScript", "Deno", "Fresh", "Health", "Website"]
 ---
 
 Breathwork V2 is a user-friendly web application designed to guide users through

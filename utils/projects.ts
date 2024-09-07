@@ -53,3 +53,35 @@ export async function getProject(slug: string): Promise<Project | null> {
     return null;
   }
 }
+
+export async function getProjectsAndTags(): Promise<
+  { projects: Project[]; tags: string[] }
+> {
+  const files = Deno.readDir("./projects");
+  const projects: Project[] = [];
+  const tagMap = new Map<string, string>();
+
+  for await (const file of files) {
+    if (file.isFile && file.name.endsWith(".md")) {
+      const content = await Deno.readTextFile(`./projects/${file.name}`);
+      const slug = file.name.replace(".md", "");
+      const project = await processProject(slug, content);
+      projects.push(project);
+      project.tags?.forEach((tag) => {
+        const lowercaseTag = tag.toLowerCase();
+        if (!tagMap.has(lowercaseTag)) {
+          tagMap.set(lowercaseTag, tag);
+        }
+      });
+    }
+  }
+
+  const sortedProjects = projects.sort((a, b) => {
+    if (!a.date && !b.date) return 0;
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return b.date.getTime() - a.date.getTime();
+  });
+
+  return { projects: sortedProjects, tags: Array.from(tagMap.values()) };
+}

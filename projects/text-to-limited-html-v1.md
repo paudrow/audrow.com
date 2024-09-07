@@ -3,11 +3,11 @@ name: "Limited HTML Converter"
 description: "A web application that converts plain text with basic formatting into limited HTML, providing a safe way to allow user-generated content with some formatting options."
 url: "https://github.com/audrow-nash-podcast/text-to-limited-html"
 deploymentUrl: "https://text-to-limited-html.deno.dev/"
-status: "Active"
+status: "Actively used"
 version: "1"
 pastVersions: []
 date: 2024-07-20
-tags: ["Typescript", "Deno", "Fresh", "Preact", "Tailwind CSS", "HTML", "Text Conversion", "API"]
+tags: ["Typescript", "Deno", "Fresh", "Preact", "Podcast", "Website", "API"]
 ---
 
 The Limited HTML Converter is a web application designed to convert plain text

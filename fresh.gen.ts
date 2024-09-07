@@ -11,6 +11,7 @@ import * as $project_slug_ from "./routes/project/[slug].tsx";
 import * as $projects from "./routes/projects.tsx";
 import * as $resume from "./routes/resume.tsx";
 import * as $MenuBar from "./islands/MenuBar.tsx";
+import * as $ProjectList from "./islands/ProjectList.tsx";
 import * as $ToggleDarkMode from "./islands/ToggleDarkMode.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -27,6 +28,7 @@ const manifest = {
   },
   islands: {
     "./islands/MenuBar.tsx": $MenuBar,
+    "./islands/ProjectList.tsx": $ProjectList,
     "./islands/ToggleDarkMode.tsx": $ToggleDarkMode,
   },
   baseUrl: import.meta.url,

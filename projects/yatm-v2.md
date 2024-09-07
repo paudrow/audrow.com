@@ -2,11 +2,11 @@
 name: "Yet Another Testcase Manager"
 description: "A tool for generating test cases from requirements for manual testing, with GitHub integration."
 url: "https://github.com/paudrow/yatm-v2"
-status: "Used regularly for ROS 2 and Gazebo releases"
+status: "Actively used"
 version: "2"
 pastVersions: []
 date: 2024-02-15
-tags: ["Rust", "Testing", "GitHub", "CLI", "Automation"]
+tags: ["Rust", "Testing", "CLI", "ROS 2"]
 ---
 
 Yet Another Testcase Manager (YATM) is a powerful tool designed to streamline

@@ -6,7 +6,12 @@ export const ProjectFrontmatterSchema = z.object({
   url: z.string().optional(),
   deploymentUrl: z.string().optional(),
   image: z.string().optional(),
-  status: z.string(),
+  status: z.enum([
+    "Actively used",
+    "Used occasionally",
+    "Inactive",
+    "Deprecated",
+  ]),
   version: z.string().optional(),
   pastVersionSlugs: z.array(z.string()).optional(),
   date: z.date(),
