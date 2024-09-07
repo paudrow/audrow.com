@@ -99,7 +99,7 @@ function ProjectCard({ project, selectedTags, toggleTag }: {
   return (
     <a
       href={`/project/${project.slug}`}
-      className="bg-zinc-100 dark:bg-zinc-800 p-8 rounded-lg shadow-md flex flex-col hover:shadow-lg transition-shadow duration-300 relative"
+      className="bg-zinc-100 dark:bg-zinc-800 p-8 rounded-lg shadow-md flex flex-col hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors duration-300 ease-in-out relative border border-zinc-200 dark:border-zinc-700"
     >
       <h3 className="text-2xl font-semibold mb-4 text-accent-light dark:text-accent-dark">
         {project.name}

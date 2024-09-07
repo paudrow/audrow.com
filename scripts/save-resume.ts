@@ -1,9 +1,9 @@
 import { launch } from "@astral/astral";
 import { BASE_URL } from "./wait-for-server.ts";
-import { RESUME_URL } from "../constants.ts";
+import { RESUME_FILE_URL } from "../constants.ts";
 
 export const RESUME_PAGE_URL = BASE_URL + "/resume";
-export const SAVE_PATH = "static/" + RESUME_URL;
+export const SAVE_PATH = "static/" + RESUME_FILE_URL;
 
 export async function pageToPdf(resumeUrl: string) {
   const browser = await launch();

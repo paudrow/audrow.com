@@ -2,7 +2,7 @@ import { PageLayout } from "../components/PageLayout.tsx";
 
 export default function Contact() {
   return (
-    <PageLayout currentPage="contact">
+    <PageLayout currentPage="contact" title="Contact">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
         <form className="space-y-6">

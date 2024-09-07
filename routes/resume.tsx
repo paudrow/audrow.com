@@ -1,6 +1,6 @@
 import { PageLayout } from "../components/PageLayout.tsx";
 import * as z from "npm:zod";
-import { CONTACT_INFO, RESUME_URL, SOCIAL_LINKS } from "../constants.ts";
+import { CONTACT_INFO, RESUME_FILE_URL, SOCIAL_LINKS } from "../constants.ts";
 import { Button } from "../components/Button.tsx";
 
 const ResumeSchema = z.object({
@@ -60,7 +60,7 @@ const DownloadResumeButton = () => {
   return (
     <Button
       as="a"
-      href={RESUME_URL}
+      href={RESUME_FILE_URL}
       download
     >
       Download Resume (PDF)
@@ -233,7 +233,7 @@ export default function Resume() {
   });
 
   return (
-    <PageLayout currentPage="resume">
+    <PageLayout currentPage="resume" title="Resume">
       <div className="space-y-6 print:space-y-4">
         <section className="text-center mb-6 print:mb-4 print:break-inside-avoid">
           <h1 className="text-4xl font-bold text-lightmode-accent-500 dark:text-darkmode-accent-500 mb-2 print:text-3xl">

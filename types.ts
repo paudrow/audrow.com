@@ -18,3 +18,11 @@ export type MenuItem = {
   path: string;
   external?: boolean;
 };
+
+export interface WorkExperience {
+  company: string;
+  role: string;
+  startDate: string;
+  endDate: string;
+  logo: string;
+}

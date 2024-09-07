@@ -6,7 +6,7 @@ export default async function Projects() {
   const { projects, tags } = await getProjectsAndTags();
 
   return (
-    <PageLayout currentPage="projects">
+    <PageLayout currentPage="projects" title="Projects">
       <div className="space-y-8">
         <h2 className="text-2xl font-bold">
           My Projects

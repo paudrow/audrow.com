@@ -27,7 +27,7 @@ export default function ProjectPage({ data }: PageProps<Project | null>) {
   }
 
   return (
-    <PageLayout currentPage="projects">
+    <PageLayout currentPage="projects" title={data.name + " Project"}>
       <div className="space-y-6">
         <h1 className="text-4xl font-bold">{data.name}</h1>
         <p className="text-xl text-gray-600 dark:text-gray-400">
