@@ -9,7 +9,7 @@ import {
 
 export default function App({ Component, url, data }: PageProps) {
   const domain = url.origin;
-  const project = (data as { project?: Project })?.project;
+  const project = data as Project;
   const shareImage = project?.image
     ? `${domain}${project.image}`
     : `${domain}${DEFAULT_SHARE_IMAGE}`;
@@ -17,7 +17,7 @@ export default function App({ Component, url, data }: PageProps) {
     ? `${domain}${project.image}`
     : `${domain}${DEFAULT_SHARE_IMAGE_X}`;
   const title = project?.name
-    ? `${project.name} - ${CONTACT_INFO.NAME}`
+    ? `${project.name} Project | ${CONTACT_INFO.NAME}`
     : CONTACT_INFO.NAME;
   const description = project?.description || DEFAULT_DESCRIPTION;
 
