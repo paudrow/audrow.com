@@ -10,6 +10,7 @@ import { getProjects } from "../utils/projects.ts";
 import { Project } from "../types.ts";
 import { WORK_EXPERIENCE } from "../constants.ts";
 import { WorkExperience } from "../types.ts";
+import { PageProps } from "$fresh/server.ts";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -278,14 +279,19 @@ function ResumeButtons() {
   );
 }
 
-export default async function Home() {
+export default async function Home(props: PageProps) {
   const allProjects = await getProjects();
   const recentProjects = allProjects
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, 3);
 
   return (
-    <PageLayout currentPage="home">
+    <PageLayout
+      currentPage="home"
+      url={props.url}
+      title="Home"
+      description="Audrow Nash's personal website"
+    >
       <ProfileSection />
 
       <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8">

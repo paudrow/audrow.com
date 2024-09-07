@@ -14,7 +14,7 @@ export function Button(
   const baseClasses =
     "px-4 py-2 rounded-md font-semibold transition-colors duration-200 ease-in-out";
   const variantClasses = variant === "primary"
-    ? "bg-zinc-800 text-white hover:bg-zinc-700 dark:bg-zinc-200 dark:text-zinc-800 dark:hover:bg-zinc-300"
+    ? "bg-lightmode-accent-500 text-white hover:bg-lightmode-accent-800 dark:bg-darkmode-accent-500 dark:text-zinc-800 dark:hover:bg-zinc-300"
     : "bg-zinc-200 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-600";
 
   const classes = `${baseClasses} ${variantClasses} ${props.className || ""}`;

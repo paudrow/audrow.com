@@ -1,4 +1,4 @@
-import { assert } from "@std/assert";
+import { assert, assertEquals } from "@std/assert";
 import { launch } from "@astral/astral";
 import { BASE_URL } from "../scripts/wait-for-server.ts";
 import { MENU_ITEMS } from "../constants.ts";
@@ -12,7 +12,7 @@ Deno.test("Integration tests - Page loading and titles", async (t) => {
   await t.step("Home page loads with correct title", async () => {
     await page.goto(BASE_URL);
     const title = await page.evaluate(() => document.title);
-    assert(title === "Audrow Nash", "Home page title is incorrect");
+    assertEquals(title, "Home | Audrow Nash", "Home page title is incorrect");
   });
 
   // Test menu items
@@ -23,8 +23,9 @@ Deno.test("Integration tests - Page loading and titles", async (t) => {
         async () => {
           await page.goto(BASE_URL + item.path);
           const title = await page.evaluate(() => document.title);
-          assert(
-            title === `${item.display} | Audrow Nash`,
+          assertEquals(
+            title,
+            `${item.display} | Audrow Nash`,
             `${item.display} page title is incorrect`,
           );
         },
@@ -38,9 +39,10 @@ Deno.test("Integration tests - Page loading and titles", async (t) => {
     for (const project of projects) {
       await page.goto(BASE_URL + "/project/" + project.slug);
       const title = await page.evaluate(() => document.title);
-      assert(
-        title === `${project.name} Project | Audrow Nash`,
-        `Project page for ${project.name} title is incorrect`,
+      assertEquals(
+        title,
+        `${project.name} | Audrow Nash`,
+        `Project page for ${project.name} title is incorrect: ${title}`,
       );
 
       // Check if the project name is present on the page
@@ -56,7 +58,11 @@ Deno.test("Integration tests - Page loading and titles", async (t) => {
   await t.step("404 page loads with correct title", async () => {
     await page.goto(BASE_URL + "/non-existent-page");
     const title = await page.evaluate(() => document.title);
-    assert(title === "404 - Page not found", "404 page title is incorrect");
+    assertEquals(
+      title,
+      "404 - Page not found | Audrow Nash",
+      "404 page title is incorrect",
+    );
   });
 
   await browser.close();

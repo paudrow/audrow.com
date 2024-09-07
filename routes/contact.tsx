@@ -7,6 +7,7 @@ import {
   YouTubeIcon,
 } from "../components/Icons.tsx";
 import { Button } from "../components/Button.tsx";
+import { PageProps } from "$fresh/server.ts";
 
 function SocialLink(
   { href, icon: Icon, label }: {
@@ -26,9 +27,15 @@ function SocialLink(
   );
 }
 
-export default function Contact() {
+export default function Contact(props: PageProps) {
+  const { url } = props;
   return (
-    <PageLayout currentPage="contact" title="Contact">
+    <PageLayout
+      currentPage="contact"
+      title="Contact"
+      url={url}
+      description="Audrow Nash's contact information"
+    >
       <div className="max-w-2xl mx-auto space-y-8">
         <h2 className="text-3xl font-bold mb-6 text-lightmode-heading dark:text-darkmode-heading">
           Get in Touch

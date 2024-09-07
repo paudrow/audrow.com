@@ -96,16 +96,24 @@ function ProjectCard({ project, selectedTags, toggleTag }: {
   selectedTags: string[];
   toggleTag: (tag: string) => void;
 }) {
+  const date = new Date(project.date);
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+  });
   return (
     <a
       href={`/project/${project.slug}`}
       className="bg-zinc-100 dark:bg-zinc-800 p-8 rounded-lg shadow-md flex flex-col hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors duration-300 ease-in-out relative border border-zinc-200 dark:border-zinc-700"
     >
-      <h3 className="text-2xl font-semibold mb-4 text-accent-light dark:text-accent-dark">
+      <h3 className="text-2xl font-semibold mb-2 text-accent-light dark:text-accent-dark">
         {project.name}
       </h3>
-      <p className="text-lightmode-text dark:text-darkmode-text mb-6 flex-grow">
+      <p className="text-lightmode-text dark:text-darkmode-text mb-2 flex-grow">
         {project.description}
+      </p>
+      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+        {formattedDate}
       </p>
       {project.tags && project.tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-6">

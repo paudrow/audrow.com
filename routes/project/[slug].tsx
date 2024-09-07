@@ -12,10 +12,15 @@ export const handler: Handlers<Project | null> = {
   },
 };
 
-export default function ProjectPage({ data }: PageProps<Project | null>) {
+export default function ProjectPage(props: PageProps<Project | null>) {
+  const { data, url } = props;
   if (!data) {
     return (
-      <PageLayout currentPage="projects">
+      <PageLayout
+        currentPage="projects"
+        url={url}
+        description="The project you were looking for doesn't exist."
+      >
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Project Not Found</h1>
           <p className="text-xl">
@@ -27,7 +32,12 @@ export default function ProjectPage({ data }: PageProps<Project | null>) {
   }
 
   return (
-    <PageLayout currentPage="projects" title={data.name + " Project"}>
+    <PageLayout
+      currentPage="projects"
+      url={url}
+      title={data.name}
+      description={data.description}
+    >
       <div className="space-y-6">
         <h1 className="text-4xl font-bold">{data.name}</h1>
         <p className="text-xl text-gray-600 dark:text-gray-400">

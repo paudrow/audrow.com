@@ -1,60 +1,7 @@
 import { PageLayout } from "../components/PageLayout.tsx";
-import * as z from "npm:zod";
-import { CONTACT_INFO, RESUME_FILE_URL, SOCIAL_LINKS } from "../constants.ts";
+import { RESUME_DATA, RESUME_FILE_URL } from "../constants.ts";
 import { Button } from "../components/Button.tsx";
-
-const ResumeSchema = z.object({
-  name: z.string(),
-  title: z.string(),
-  contact: z.object({
-    email: z.string(),
-    location: z.string(),
-    phone: z.string(),
-    website: z.string(),
-    github: z.string(),
-    linkedin: z.string(),
-    x: z.string(),
-  }),
-  summary: z.string(),
-  experience: z.array(z.object({
-    organization: z.string(),
-    url: z.string().optional(),
-    position: z.string(),
-    duration: z.string(),
-    responsibilities: z.array(z.string()),
-    hide: z.boolean().optional(),
-  })),
-  education: z.array(z.object({
-    degree: z.string(),
-    institution: z.string(),
-    url: z.string(),
-    year: z.string(),
-    details: z.string(),
-  })),
-  skills: z.array(z.object({
-    category: z.string(),
-    strongest: z.array(z.string()),
-    familiar: z.array(z.string()),
-  })),
-  projects: z.array(z.object({
-    name: z.string(),
-    description: z.string(),
-    duration: z.string(),
-    role: z.string(),
-    url: z.string().optional(),
-    hide: z.boolean().optional(),
-  })),
-  awards: z.array(z.object({
-    name: z.string(),
-    organization: z.string(),
-    url: z.string(),
-    year: z.string(),
-  })),
-  interests: z.object({
-    professional: z.array(z.string()),
-    personal: z.array(z.string()),
-  }),
-});
+import { PageProps } from "$fresh/server.ts";
 
 const DownloadResumeButton = () => {
   return (
@@ -76,164 +23,17 @@ const formatUrl = (url: string, maxLength: number = 30) => {
   return formatted;
 };
 
-export default function Resume() {
-  const resumeData = ResumeSchema.parse({
-    name: CONTACT_INFO.NAME,
-    title: CONTACT_INFO.TITLE,
-    contact: {
-      email: CONTACT_INFO.EMAIL,
-      location: CONTACT_INFO.LOCATION,
-      phone: CONTACT_INFO.PHONE,
-      website: CONTACT_INFO.WEBSITE,
-      github: SOCIAL_LINKS.GITHUB,
-      linkedin: SOCIAL_LINKS.LINKEDIN,
-      x: SOCIAL_LINKS.X,
-    },
-    summary:
-      "Software engineer at Intrinsic AI and host of the Audrow Nash Podcast. Experienced in robotics and middleware development, with a strong background in research and open-source contributions.",
-    experience: [
-      {
-        organization: "Intrinsic",
-        url: "https://intrinsic.ai",
-        position: "Software Engineer",
-        duration: "01/2023 - Present",
-        responsibilities: [
-          "Working on cutting-edge robotics and AI technologies",
-          "Continued work on ROS 2 following the acquisition of Open Robotics",
-        ],
-      },
-      {
-        organization: "Open Robotics (acquired by Intrinsic)",
-        url: "https://www.openrobotics.org",
-        position: "Software Engineer",
-        duration: "01/2021 - 12/2022",
-        responsibilities: [
-          "Made core changes to ROS 2's C++ client library, including redesigning fundamental components to use C++17 features",
-          "Solved several race conditions in ROS 2's C++ client library's multi-threaded executor",
-          "Managed community contributions to various public repositories",
-        ],
-      },
-      {
-        organization: "University of Southern California",
-        url: "https://www.usc.edu",
-        position: "Research Assistant",
-        duration: "05/2018 - 12/2020",
-        responsibilities: [
-          "Designed and implemented an 8-week in-home interaction using ROS 1 and Python",
-          "Mentored five undergraduate and three master's students",
-        ],
-      },
-      {
-        organization: "1X Robotics (formerly Halodi Robotics)",
-        url: "https://1x.ai",
-        position: "Intern",
-        duration: "06/2019 - 08/2019",
-        responsibilities: [
-          "Implemented a way for their humanoid robot to mirror arm motions",
-        ],
-        hide: true,
-      },
-      {
-        organization: "University of Michigan",
-        url: "https://umich.edu",
-        position: "Research Assistant",
-        duration: "08/2015 - 05/2018",
-        responsibilities: [
-          "Implemented a fast 2D rigid body simulator in C++",
-          "Used the simulator to tune control parameters for a bipedal robot",
-        ],
-      },
-    ],
-    education: [
-      {
-        degree: "MS in Computer Science",
-        institution: "University of Southern California",
-        url: "https://www.usc.edu",
-        year: "2020",
-        details: "Advisor: Maja Matarić",
-      },
-      {
-        degree: "MS in Electrical Engineering",
-        institution: "University of Michigan",
-        url: "https://umich.edu",
-        year: "2018",
-        details: "Advisors: David Remy and Edwin Olson",
-      },
-      {
-        degree: "BS in Electrical Engineering",
-        institution: "University of North Carolina at Charlotte",
-        url: "https://www.uncc.edu",
-        year: "2014",
-        details: "Advisor: James Conrad",
-      },
-    ],
-    skills: [
-      {
-        category: "Programming",
-        strongest: ["Python", "C/C++", "JavaScript/TypeScript"],
-        familiar: ["Rust", "Go", "Bash", "Lua"],
-      },
-      {
-        category: "Robotics & Systems",
-        strongest: ["ROS 2", "Ubuntu/Debian"],
-        familiar: ["ROS 1", "Gazebo"],
-      },
-      {
-        category: "Web & DevOps",
-        strongest: ["Deno", "Git", "Docker"],
-        familiar: ["Node.js", "Angular", "React", "PostgreSQL"],
-      },
-    ],
-    projects: [
-      {
-        name: "Audrow Nash Podcast",
-        description:
-          "Host of a podcast discussing robotics and AI technologies",
-        duration: "Present",
-        role: "Host",
-        url: "https://www.audrownashpodcast.com/",
-      },
-      {
-        name: "Sense Think Act Podcast",
-        description:
-          "Host of a podcast discussing robotics and AI technologies",
-        duration: "03/2019 - 05/2023",
-        role: "Host",
-        url: "https://www.sensethinkact.com/",
-        hide: true,
-      },
-      {
-        name: "Robohub Podcast",
-        description:
-          "Led an international team of 15 people in publishing 160 podcast episodes and raised donations of around 20k USD",
-        duration: "03/2014 - 05/2020",
-        role: "Podcast Director",
-        url: "https://robohub.org/podcast/",
-        hide: true,
-      },
-    ],
-    awards: [
-      {
-        name: "Graduate Research Fellowship",
-        organization: "National Science Foundation",
-        url:
-          "https://ece.engin.umich.edu/stories/audrow-nash-earns-nsf-fellowship-for-unmanned-aerial-vehicle-research",
-        year: "2016",
-      },
-    ],
-    interests: {
-      professional: [
-        "Robot middleware",
-        "Manufacturing",
-        "Simulation",
-        "Web development",
-      ],
-      personal: ["Improv", "Podcasting", "Rock climbing"],
-    },
-  });
+export default function Resume(props: PageProps) {
+  const { url } = props;
+  const resumeData = RESUME_DATA;
 
   return (
-    <PageLayout currentPage="resume" title="Resume">
+    <PageLayout
+      currentPage="resume"
+      title="Resume"
+      url={url}
+      description="Audrow Nash's resume"
+    >
       <div className="space-y-6 print:space-y-4">
         <section className="text-center mb-6 print:mb-4 print:break-inside-avoid">
           <h1 className="text-4xl font-bold text-lightmode-accent-500 dark:text-darkmode-accent-500 mb-2 print:text-3xl">
