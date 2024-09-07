@@ -2,7 +2,8 @@ import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { Pages } from "../types.ts";
 import { JSX } from "preact";
-import { PODCAST_URL } from "../constants.ts";
+import { MENU_ITEMS } from "../constants.ts";
+import type { MenuItem } from "../types.ts";
 
 const MenuIcon = () => (
   <svg
@@ -111,19 +112,6 @@ const SmallScreenMenu = (
 export function MenuBar({ currentPage }: { currentPage: Pages }) {
   const isOpen = useSignal(false);
 
-  const menuItems: MenuItem[] = [
-    { display: "About", slug: "about", path: "/about" },
-    { display: "Resume", slug: "resume", path: "/resume" },
-    { display: "Projects", slug: "projects", path: "/projects" },
-    { display: "Contact", slug: "contact", path: "/contact" },
-    {
-      display: "Podcast",
-      slug: undefined,
-      path: PODCAST_URL,
-      external: true,
-    },
-  ];
-
   // Helper function to determine if an item is the current page
   const isCurrentPage = (item: MenuItem): boolean =>
     currentPage === item.slug || (currentPage === "home" && item.path === "/");
@@ -154,24 +142,17 @@ export function MenuBar({ currentPage }: { currentPage: Pages }) {
             <MenuIcon />
           </button>
         </div>
-        <LargeScreenMenu menuItems={menuItems} isCurrentPage={isCurrentPage} />
+        <LargeScreenMenu menuItems={MENU_ITEMS} isCurrentPage={isCurrentPage} />
       </div>
       <Backdrop isOpen={isOpen} />
       <SmallScreenMenu
-        menuItems={menuItems}
+        menuItems={MENU_ITEMS}
         isOpen={isOpen}
         setIsOpen={(value) => isOpen.value = value}
         isCurrentPage={isCurrentPage}
       />
     </>
   );
-}
-
-interface MenuItem {
-  display: string;
-  slug: Pages | undefined;
-  path: string;
-  external?: boolean;
 }
 
 interface MenuProps {

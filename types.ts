@@ -11,3 +11,10 @@ export type Pages =
   | "resume"
   | "contact"
   | undefined;
+
+export type MenuItem = {
+  display: string;
+  slug: Pages | undefined;
+  path: string;
+  external?: boolean;
+};

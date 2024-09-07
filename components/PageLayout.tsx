@@ -17,8 +17,8 @@ export function PageLayout({ children, currentPage }: PageLayoutProps) {
           <main class="flex-grow py-8 sm:py-12">
             {children}
           </main>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </div>
   );

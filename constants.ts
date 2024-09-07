@@ -1,3 +1,4 @@
+import type { MenuItem } from "./types.ts";
 export const RESUME_URL = "/Audrow Nash Resume.pdf";
 
 export const SOCIAL_LINKS = {
@@ -17,3 +18,16 @@ export const CONTACT_INFO = {
   LOCATION: "San Antonio, TX",
   WEBSITE: "https://audrow.com",
 };
+
+export const MENU_ITEMS: MenuItem[] = [
+  { display: "About", slug: "about", path: "/about" },
+  { display: "Resume", slug: "resume", path: "/resume" },
+  { display: "Projects", slug: "projects", path: "/projects" },
+  { display: "Contact", slug: "contact", path: "/contact" },
+  {
+    display: "Podcast",
+    slug: undefined,
+    path: PODCAST_URL,
+    external: true,
+  },
+];
