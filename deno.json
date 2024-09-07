@@ -34,6 +34,6 @@
     "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
     "zod": "npm:zod@^3.23.8"
   },
-  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
+  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact", "lib": ["dom", "deno.ns"] },
   "nodeModulesDir": true
 }

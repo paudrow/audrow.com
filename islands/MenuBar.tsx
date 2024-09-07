@@ -47,7 +47,7 @@ const LargeScreenMenu = ({ menuItems, isCurrentPage }: MenuProps) => (
             href={item.path}
             target={item.external ? "_blank" : undefined}
             rel={item.external ? "noopener noreferrer" : undefined}
-            class={`relative block px-3 py-2 transition ${
+            class={`relative block px-3 py-2 transition duration-150 ease-in-out ${
               isCurrentPage(item)
                 ? "text-accent-light dark:text-accent-dark"
                 : "hover:text-accent-light dark:hover:text-accent-dark"

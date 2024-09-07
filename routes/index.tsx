@@ -17,7 +17,7 @@ function ProjectCard({ project }: { project: Project }) {
     <li className="flex gap-4">
       <a
         href={`/project/${project.slug}`}
-        className="w-full hover:bg-zinc-50 dark:hover:bg-zinc-800 transition duration-150 ease-in-out rounded-lg p-2"
+        className="w-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150 ease-in-out rounded-lg p-2"
       >
         <dl className="flex flex-auto flex-wrap gap-x-2">
           <dt className="sr-only">Project</dt>
@@ -127,11 +127,11 @@ function SocialLink(
 ) {
   return (
     <a
-      className="group -m-1 p-1"
+      className="group -m-1 p-1 transition duration-150 ease-in-out"
       aria-label={label}
       href={href}
     >
-      <Icon className="h-6 w-6 fill-lightmode-text transition group-hover:fill-lightmode-text-hover dark:fill-darkmode-text dark:group-hover:fill-darkmode-text-hover" />
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </a>
   );
 }

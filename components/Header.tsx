@@ -55,14 +55,6 @@ export function Header({ currentPage }: HeaderProps) {
         <MenuBar currentPage={currentPage} />
         <DarkModeToggle />
       </div>
-      <div class="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-md my-4">
-        <p class="text-yellow-800 dark:text-yellow-200">
-          <strong>Disclaimer:</strong>{" "}
-          This site is currently under development. I'm using an AI language
-          model to assist with the content, and some information may not be
-          accurate or up-to-date. Please check back later for the final version.
-        </p>
-      </div>
     </header>
   );
 }

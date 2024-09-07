@@ -322,9 +322,11 @@ export default function Resume() {
                     {job.duration}
                   </p>
                 </div>
-                <ul className="list-disc list-inside mt-2 print:mt-1">
+                <ul className="list-disc list-outside pl-5 mt-2 print:mt-1">
                   {job.responsibilities.map((resp, idx) => (
-                    <li key={idx}>{resp}</li>
+                    <li key={idx} className="relative pl-1.5 pb-1">
+                      <span className="inline-block align-top">{resp}</span>
+                    </li>
                   ))}
                 </ul>
               </div>

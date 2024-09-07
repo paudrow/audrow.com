@@ -17,6 +17,11 @@ export const CONTACT_INFO = {
   WEBSITE: "https://audrow.com",
 };
 
+export const DEFAULT_DESCRIPTION =
+  "Audrow Nash is a software engineer with a passion for robotics, web development, and podcasting.";
+export const DEFAULT_SHARE_IMAGE = "/share.png";
+export const DEFAULT_SHARE_IMAGE_X = "/share-x.png";
+
 export const PROJECTS_URL = "/projects";
 export const RESUME_URL = "/resume";
 export const CONTACT_URL = "/contact";

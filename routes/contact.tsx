@@ -1,57 +1,86 @@
 import { PageLayout } from "../components/PageLayout.tsx";
+import { CONTACT_INFO, SOCIAL_LINKS } from "../constants.ts";
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  XIcon,
+  YouTubeIcon,
+} from "../components/Icons.tsx";
+import { Button } from "../components/Button.tsx";
+
+function SocialLink(
+  { href, icon: Icon, label }: {
+    href: string;
+    icon: typeof XIcon;
+    label: string;
+  },
+) {
+  return (
+    <a
+      className="group -m-1 p-1"
+      aria-label={label}
+      href={href}
+    >
+      <Icon className="h-6 w-6 fill-lightmode-text transition group-hover:fill-lightmode-text-hover dark:fill-darkmode-text dark:group-hover:fill-darkmode-text-hover" />
+    </a>
+  );
+}
 
 export default function Contact() {
   return (
     <PageLayout currentPage="contact" title="Contact">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-        <form className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-1">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-              required
+      <div className="max-w-2xl mx-auto space-y-8">
+        <h2 className="text-3xl font-bold mb-6 text-lightmode-heading dark:text-darkmode-heading">
+          Get in Touch
+        </h2>
+
+        <div>
+          <h3 className="text-xl font-semibold mb-4 text-lightmode-heading dark:text-darkmode-heading">
+            Direct Contact
+          </h3>
+          <p className="mb-4 text-lightmode-text dark:text-darkmode-text">
+            Feel free to reach out to me directly:
+          </p>
+          <Button
+            as="a"
+            href={`mailto:${CONTACT_INFO.EMAIL}`}
+            className="w-full text-center"
+          >
+            {CONTACT_INFO.EMAIL}
+          </Button>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold mb-4 text-lightmode-heading dark:text-darkmode-heading">
+            Social Media
+          </h3>
+          <p className="mb-6 text-lightmode-text dark:text-darkmode-text">
+            Connect with me on various social media platforms. I'm most active
+            on 𝕏 (formerly, Twitter).
+          </p>
+          <div className="flex space-x-4 mb-8">
+            <SocialLink
+              href={SOCIAL_LINKS.X}
+              icon={XIcon}
+              label="X (Twitter)"
+            />
+            <SocialLink
+              href={SOCIAL_LINKS.LINKEDIN}
+              icon={LinkedInIcon}
+              label="LinkedIn"
+            />
+            <SocialLink
+              href={SOCIAL_LINKS.YOUTUBE}
+              icon={YouTubeIcon}
+              label="YouTube"
+            />
+            <SocialLink
+              href={SOCIAL_LINKS.GITHUB}
+              icon={GitHubIcon}
+              label="GitHub"
             />
           </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-1">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-              required
-            >
-            </textarea>
-          </div>
-          <div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </PageLayout>
   );
